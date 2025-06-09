@@ -371,6 +371,43 @@
             box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
         }
 
+        /* Careers Section */
+        .careers {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .careers-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .careers-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--light-text);
+            margin-bottom: 40px;
+        }
+
+        .careers-cta {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .careers-cta:hover {
+            background: #0041a0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 81, 199, 0.3);
+        }
+
         /* Footer */
         footer {
             background: var(--white);
@@ -555,6 +592,8 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#about">About Us</a></li>
+                <li><a href="#what-we-do">What We Do</a></li>
+                <li><a href="#careers">Careers</a></li>
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
             <button class="mobile-toggle" id="mobileToggle">
@@ -621,7 +660,7 @@
     </section>
 
     <!-- What We Do Section -->
-    <section class="services">
+    <section id="what-we-do" class="services">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>What We Do</h2>
@@ -658,6 +697,20 @@
                 Empowering the next generation of traders with professional education and mentorship programs designed by industry experts.
             </p>
             <a href="https://academy.lynxpointcapital.com" class="academy-cta fade-in" target="_blank">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers" class="careers">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Join Our Team</h2>
+                <p>We're always looking for exceptional talent to join our growing team of traders, developers, and researchers.</p>
+            </div>
+            <div class="careers-content fade-in">
+                <p>At Lynx Point Capital, we foster a culture of innovation, collaboration, and continuous learning. We offer competitive compensation, cutting-edge technology, and the opportunity to work alongside some of the brightest minds in the industry.</p>
+                <a href="mailto:careers@lynxpointcapital.com" class="careers-cta">View Open Positions</a>
+            </div>
         </div>
     </section>
 
