@@ -243,6 +243,40 @@
             gap: 3rem;
         }
 
+        .about-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px dashed #4a90e2;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .image-placeholder:hover {
+            border-color: #357abd;
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+        }
+
+        .image-placeholder-content {
+            text-align: center;
+            color: #4a90e2;
+            font-weight: 500;
+        }
+
+        .image-placeholder-content span {
+            font-size: 1rem;
+            display: block;
+        }
+
         .stat-item {
             text-align: center;
         }
@@ -273,6 +307,24 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 3rem;
             margin-top: 4rem;
+        }
+
+        .services-image-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .services-image-card h3,
+        .services-image-card h4,
+        .services-image-card p {
+            display: none;
+        }
+
+        .services-image-placeholder {
+            height: 200px;
+            width: 100%;
         }
 
         .service-card {
@@ -351,19 +403,39 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
-        .academy-card h3 {
+        .academy-header {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .academy-text h3 {
             font-size: 2rem;
             font-weight: 300;
             margin-bottom: 2rem;
             color: white;
-            text-align: center;
         }
 
-        .academy-card p {
+        .academy-text p {
             font-size: 1.1rem;
             color: #ccc;
-            margin-bottom: 2rem;
             line-height: 1.7;
+        }
+
+        .academy-placeholder {
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .academy-placeholder:hover {
+            border-color: #4a90e2;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .academy-placeholder .image-placeholder-content {
+            color: #ccc;
         }
 
         .academy-content {
@@ -501,7 +573,8 @@
         @media (max-width: 1024px) {
             .about-content,
             .services-grid,
-            .academy-content {
+            .academy-content,
+            .academy-header {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
@@ -514,9 +587,12 @@
                 /* No special styling needed for responsive */
             }
 
-            .about-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+            .services-image {
+                order: -1;
+            }
+
+            .academy-header {
+                text-align: center;
             }
         }
 
@@ -593,9 +669,9 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Where Markets Evolve</h1>
-            <p class="subtitle">Through sophisticated trading strategies and cutting-edge technology, we deliver exceptional performance in today's dynamic financial markets.</p>
-            <a href="#about" class="hero-cta">Discover Our Approach</a>
+            <h1>Where Markets Are Mastered</h1>
+            <p class="subtitle">Through disciplined strategies and relentless innovation, we navigate global markets with precision and conviction.</p>
+            <a href="#about" class="hero-cta">Explore Our Edge</a>
         </div>
     </section>
 
@@ -676,8 +752,19 @@
             </div>
             
             <div class="academy-card fade-in">
-                <h3>Master the Markets with Professional Trading Education</h3>
-                <p>Lynx Point Academy delivers elite trading programs designed to equip traders with the skills needed to compete in today's financial markets. Our curriculum blends rigorous theory with real-world application, ensuring you gain both knowledge and practical experience.</p>
+                <div class="academy-header">
+                    <div class="academy-text">
+                        <h3>Master the Markets with Professional Trading Education</h3>
+                        <p>Lynx Point Academy delivers elite trading programs designed to equip traders with the skills needed to compete in today's financial markets. Our curriculum blends rigorous theory with real-world application, ensuring you gain both knowledge and practical experience.</p>
+                    </div>
+                    <div class="academy-image">
+                        <div class="image-placeholder academy-placeholder">
+                            <div class="image-placeholder-content">
+                                <span>Trading Education Image</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="academy-content">
                     <div class="academy-section">
