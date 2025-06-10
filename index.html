@@ -322,8 +322,8 @@
             padding: 4rem;
             border-radius: 0;
             margin-top: 3rem;
-            text-align: center;
-            max-width: 900px;
+            text-align: left;
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
@@ -334,6 +334,7 @@
             font-weight: 300;
             margin-bottom: 2rem;
             color: white;
+            text-align: center;
         }
 
         .academy-card p {
@@ -341,6 +342,64 @@
             color: #ccc;
             margin-bottom: 2rem;
             line-height: 1.7;
+        }
+
+        .academy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .academy-section h4 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #4a90e2;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 0.5rem;
+        }
+
+        .academy-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .academy-list li {
+            color: #ccc;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .academy-list li::before {
+            content: '▶';
+            color: #4a90e2;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .academy-list li strong {
+            color: white;
+        }
+
+        .academy-footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .academy-footer h4 {
+            font-size: 1.4rem;
+            color: #4a90e2;
+            margin-bottom: 1rem;
+        }
+
+        .academy-footer p {
+            margin-bottom: 2rem;
         }
 
         .learn-more-btn {
@@ -419,7 +478,8 @@
         /* Responsive Design */
         @media (max-width: 1024px) {
             .about-content,
-            .services-grid {
+            .services-grid,
+            .academy-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
@@ -503,7 +563,7 @@
             <ul class="nav-links">
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">What We Do</a></li>
-                <li><a href="#academy">Academy</a></li>
+                <li><a href="https://lynxpoint-capital.mykajabi.com/" target="_blank">Academy</a></li>
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
@@ -595,10 +655,34 @@
             </div>
             
             <div class="academy-card fade-in">
-                <h3>Master the Markets</h3>
-                <p>Our comprehensive trading academy provides institutional-grade education and training programs designed to develop the next generation of professional traders. From fundamental market principles to advanced quantitative strategies, we deliver the knowledge and practical skills necessary to excel in today's sophisticated trading environment.</p>
-                <p>Whether you're beginning your trading journey or seeking to enhance your existing expertise, our academy offers structured learning paths, hands-on simulations, and ongoing mentorship from industry professionals.</p>
-                <a href="https://academy.lynxpointcapital.com" class="learn-more-btn" target="_blank">Learn More</a>
+                <h3>Master the Markets with Professional Trading Education</h3>
+                <p>Lynx Point Academy delivers elite trading programs designed to equip traders with the skills needed to compete in today's financial markets. Our curriculum blends rigorous theory with real-world application, ensuring you gain both knowledge and practical experience.</p>
+                
+                <div class="academy-content">
+                    <div class="academy-section">
+                        <h4>Structured Trading Programs</h4>
+                        <ul class="academy-list">
+                            <li><strong>Core Trading Concepts</strong> – Price action, technical analysis, and risk management fundamentals.</li>
+                            <li><strong>Advanced Market Strategies</strong> – Systematic trading, quantitative methods, and execution tactics.</li>
+                            <li><strong>Professional Trading Preparation</strong> – Training for hedge funds, proprietary firms, and active market participants.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="academy-section">
+                        <h4>Why Train with Us?</h4>
+                        <ul class="academy-list">
+                            <li><strong>Industry-Proven Mentors</strong> – Learn from professional traders with live market experience.</li>
+                            <li><strong>Interactive Trading Labs</strong> – Practice with real-time simulations and professional platforms.</li>
+                            <li><strong>Adaptive Learning Paths</strong> – Tailored courses for all skill levels, from beginners to advanced traders.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="academy-footer">
+                    <h4>Start Your Trading Career</h4>
+                    <p>Whether you're taking your first steps or sharpening your edge, Lynx Point Academy provides the tools and training for success.</p>
+                    <a href="https://lynxpoint-capital.mykajabi.com/" class="learn-more-btn" target="_blank">Learn More</a>
+                </div>
             </div>
         </div>
     </section>
