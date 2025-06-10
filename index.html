@@ -93,25 +93,25 @@
             width: 100%;
         }
 
-        /* Hero Section with Video */
+        /* Hero Section with Image */
         .hero {
             position: relative;
-            height: 100vh;
+            height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: #000;
+            background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Website-Headers_14-FL_241029_339.jpg?raw=true') center/cover no-repeat;
         }
 
-        .hero-video {
+        .hero-image {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.6;
+            opacity: 0.8;
         }
 
         .hero-overlay {
@@ -481,12 +481,8 @@
             </ul>
         </nav>
     </header>
-    <!-- Hero Section with Video -->
+    <!-- Hero Section with Image -->
     <section class="hero">
-        <video class="hero-video" autoplay muted loop>
-            <source src="./MVI_6965.MP4" type="video/mp4">
-            <!-- Fallback for browsers that don't support video -->
-        </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Where Markets Evolve</h1>
@@ -500,13 +496,13 @@
         <div class="container">
             <div class="section-header fade-in">
                 <h2 class="section-title">The Next-Generation Trading Firm</h2>
-                <p class="section-subtitle">Our work is powered by the deepest integration of financial expertise, mathematical precision, and technological innovation.</p>
+                <p class="section-subtitle">LynxPoint is a modern trading firm built at the intersection of financial insight, mathematical precision, and cutting-edge technology.</p>
             </div>
             
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <p>Combining deep trading acumen with cutting-edge analytics and technology, we deliver critical liquidity and strategic trading solutions to the world's most important financial institutions—while helping shape the global markets of tomorrow.</p>
-                    <p>Our systematic approach to trading leverages advanced quantitative models, risk management protocols, and real-time market intelligence to consistently generate alpha across diverse market conditions.</p>
+                    <p>We combine advanced analytics, systematic execution, and a deep understanding of market dynamics to deliver strategic trading solutions across global markets. Our mission is to empower traders and partners through innovative tools, rigorous risk management, and forward-thinking strategy.</p>
+                    <p>With a relentless focus on performance and continuous improvement, we aim to shape the future of active trading—one decision at a time.</p>
                 </div>
                 <div class="about-stats fade-in">
                     <div class="stat-item">
@@ -514,16 +510,16 @@
                         <span class="stat-label">Market Coverage</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">$2B+</span>
-                        <span class="stat-label">Daily Volume</span>
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Global Markets</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Years Experience</span>
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Years Combined Experience</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Uptime</span>
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Order Accuracy</span>
                     </div>
                 </div>
             </div>
@@ -654,12 +650,13 @@
             observer.observe(element);
         });
 
-        // Video fallback handling
-        const video = document.querySelector('.hero-video');
-        video.addEventListener('error', function() {
-            // If video fails to load, show a gradient background instead
-            this.style.display = 'none';
-            document.querySelector('.hero').style.background = 'linear-gradient(135deg, #1a1a1a 0%, #4a90e2 100%)';
+        // Image fallback handling
+        const heroSection = document.querySelector('.hero');
+        const heroImage = new Image();
+        heroImage.src = 'https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Website-Headers_14-FL_241029_339.jpg?raw=true';
+        heroImage.addEventListener('error', function() {
+            // If image fails to load, show a gradient background instead
+            heroSection.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #4a90e2 100%)';
         });
     </script>
 </body>
