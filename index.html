@@ -424,6 +424,24 @@
             line-height: 1.7;
         }
 
+        .academy-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .academy-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .academy-image:hover img {
+            transform: scale(1.05);
+        }
+
         .academy-placeholder {
             border-color: rgba(255,255,255,0.3);
             background: rgba(255,255,255,0.05);
@@ -758,11 +776,7 @@
                         <p>Lynx Point Academy delivers elite trading programs designed to equip traders with the skills needed to compete in today's financial markets. Our curriculum blends rigorous theory with real-world application, ensuring you gain both knowledge and practical experience.</p>
                     </div>
                     <div class="academy-image">
-                        <div class="image-placeholder academy-placeholder">
-                            <div class="image-placeholder-content">
-                                <span>Trading Education Image</span>
-                            </div>
-                        </div>
+                        <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/425-Park_FL-10_240404_462.jpg?raw=true" alt="Trading Education Environment" loading="lazy">
                     </div>
                 </div>
                 
@@ -881,6 +895,21 @@
             // If image fails to load, show a gradient background instead
             heroSection.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #4a90e2 100%)';
         });
+
+        // Academy image fallback handling
+        const academyImage = document.querySelector('.academy-image img');
+        if (academyImage) {
+            academyImage.addEventListener('error', function() {
+                // If image fails to load, replace with placeholder
+                this.parentElement.innerHTML = `
+                    <div class="image-placeholder academy-placeholder">
+                        <div class="image-placeholder-content">
+                            <span>Trading Education Image</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
     </script>
 </body>
 </html>
