@@ -1,564 +1,548 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.5">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - LynxPoint Capital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #ffffff;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #000000;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.7;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #fafafa, #ffffff);
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 300;
+            margin-bottom: 1.25rem;
+            color: #000000;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: #555555;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 300;
+            margin-bottom: 3.5rem;
+            text-align: center;
+            color: #000000;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: #2563eb;
+        }
+
+        /* Founders Section */
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5rem;
+            margin-bottom: 4rem;
+        }
+
+        .founder-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.5rem;
+            padding: 2rem;
+            background-color: #fafafa;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+
+        .founder-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .founder-image {
+            width: 180px;
+            height: 180px;
+            flex-shrink: 0;
+            background-color: #ffffff;
+            border: 1px solid #e5e5e5;
+            overflow: hidden;
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .founder-card:hover .founder-image img {
+            transform: scale(1.05);
+        }
+
+        .founder-info {
+            flex: 1;
+        }
+
+        .founder-name {
+            font-size: 1.625rem;
+            font-weight: 400;
+            margin-bottom: 0.375rem;
+            color: #000000;
+        }
+
+        .founder-title {
+            color: #2563eb;
+            margin-bottom: 1.25rem;
+            font-weight: 400;
+            font-size: 1.125rem;
+        }
+
+        .founder-bio {
+            color: #333333;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Team Section */
+        .team-section {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e5e5e5;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .team-member-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.25rem;
+            background-color: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            overflow: hidden;
+        }
+
+        .team-member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .team-member:hover .team-member-image img {
+            filter: grayscale(0%);
+        }
+
+        .team-member-name {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 0.375rem;
+            color: #000000;
+        }
+
+        .team-member-role {
+            color: #666666;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Values Section */
+        .values-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .value-block {
+            margin-bottom: 3.5rem;
+            padding: 2.5rem;
+            background-color: #fafafa;
+            border-left: 3px solid #2563eb;
+            transition: all 0.3s ease;
+        }
+
+        .value-block:hover {
+            background-color: #f5f5f5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .value-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .value-title {
+            font-size: 1.625rem;
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+            color: #000000;
+        }
+
+        .value-description {
+            color: #333333;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .value-description strong {
+            font-weight: 500;
+            color: #000000;
+            display: inline-block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Join Section */
+        .join-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+        }
+
+        .join-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .join-title {
+            font-size: 2.25rem;
+            font-weight: 300;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .join-description {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            line-height: 1.8;
+            font-size: 1.125rem;
+        }
+
+        .join-button {
+            display: inline-block;
+            background-color: #2563eb;
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.0625rem;
+            transition: all 0.3s ease;
+            border: 2px solid #2563eb;
+        }
+
+        .join-button:hover {
+            background-color: transparent;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Subtle animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .founders-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .founder-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .founder-image {
+                margin: 0 auto;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            h1 {
+                font-size: 2.25rem;
+            }
+
+            .section-title {
+                font-size: 1.875rem;
+            }
+
+            .value-block {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;About Us - LynxPoint Capital&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>* {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000000;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Navigation */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>nav {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: sticky;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 100;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.nav-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000000;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: opacity 0.2s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.7;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Main Content */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Hero Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero-section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 5rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(to bottom, #fafafa, #ffffff);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000000;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: -0.5px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero-description {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #555555;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 800px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Section Styles */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 5rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 3.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000000;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: -0.5px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title::after {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>bottom: -12px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateX(-50%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 60px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 2px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #2563eb;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Founders Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founders-grid {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(2, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 4rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-card {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: flex-start;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fafafa;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-card:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-color: #2563eb;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-image {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 180px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 180px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-shrink: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-image img {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>object-fit: cover;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-card:hover .founder-image img {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(1.05);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-info {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-name {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.625rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 400;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.375rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000000;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-title {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #2563eb;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 400;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.125rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-bio {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #333333;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Team Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.team-section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f8f9fa;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-top: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.team-grid {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(3, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.team-member {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.team-member:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-3px);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.team-member-image {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 120px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 120px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f5f5f5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e5e5e5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.team-member-image img {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>object-fit: cover;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>filter: grayscale(100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: filter 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.team-member:hover .team-member-image img {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>filter: grayscale(0%);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.team-member-name {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.125rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 500;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.375rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000000;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.team-member-role {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.95rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Values Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.values-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 900px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.value-block {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 3.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fafafa;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-left: 3px solid #2563eb;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.value-block:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f5f5f5;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.value-block:last-child {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.value-title {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.625rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 400;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000000;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.value-description {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #333333;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.value-description strong {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 500;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000000;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Join Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.join-section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 5rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.join-section::before {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.join-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.join-title {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: -0.5px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.join-description {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: rgba(255, 255, 255, 0.85);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 700px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-left: auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-right: auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.125rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.join-button {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #2563eb;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 400;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.0625rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid #2563eb;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.join-button:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Subtle animations */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fadeIn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>from {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: translateY(20px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>to {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 1;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: translateY(0);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeIn 0.8s ease-out;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Responsive */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.founders-grid {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>gap: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.founder-card {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.founder-image {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.team-grid {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>grid-template-columns: repeat(2, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>gap: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 2.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.section-title {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 1.875rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.value-block {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>padding: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 480px) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.team-grid {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Navigation --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="nav-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="logo"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Hero Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="hero-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;About LynxPoint Capital&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="hero-description"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>A proprietary trading firm headquartered in Quebec, committed to developing elite trading talent through structured education and institutional-grade tools.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Founders Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="section-title"&gt;Leadership&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="founders-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="founder-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="founder-image"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://via.placeholder.com/180/f5f5f5/999999?text=Jacob+Brown" alt="Jacob Brown"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="founder-info"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="founder-name"&gt;Jacob Brown&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="founder-title"&gt;Co-Founder &amp; Chief Executive Officer&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="founder-bio"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>Jacob brings over a decade of experience in quantitative trading and risk management to LynxPoint Capital. His expertise in developing high-performance trading strategies and deep understanding of market dynamics has been instrumental in establishing LynxPoint's institutional-grade standards. Prior to founding LynxPoint, Jacob held senior positions at leading proprietary trading firms where he managed multi-million dollar portfolios.</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="founder-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="founder-image"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://via.placeholder.com/180/f5f5f5/999999?text=Nicholas+Rozon" alt="Nicholas Rozon"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="founder-info"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="founder-name"&gt;Nicholas Rozon&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="founder-title"&gt;Co-Founder &amp; Chief Technology Officer&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="founder-bio"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>Nicholas combines deep technical expertise with extensive knowledge of financial markets. His background in algorithmic trading and system architecture has been crucial in building LynxPoint's cutting-edge trading infrastructure. With experience developing trading systems for major financial institutions, Nicholas ensures that LynxPoint traders have access to the same caliber of tools used by professional trading desks.</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Team Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="section team-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="section-title"&gt;Our Team&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="team-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="team-member"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="team-member-image"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://via.placeholder.com/120/f5f5f5/999999?text=SM" alt="Sarah Mitchell"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="team-member-name"&gt;Sarah Mitchell&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="team-member-role"&gt;Head of Trading&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="team-member"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="team-member-image"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://via.placeholder.com/120/f5f5f5/999999?text=MC" alt="Michael Chen"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="team-member-name"&gt;Michael Chen&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="team-member-role"&gt;Risk Manager&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="team-member"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="team-member-image"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://via.placeholder.com/120/f5f5f5/999999?text=EP" alt="Emily Park"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="team-member-name"&gt;Emily Park&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="team-member-role"&gt;Head of Academy&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="team-member"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="team-member-image"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://via.placeholder.com/120/f5f5f5/999999?text=DR" alt="David Rodriguez"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="team-member-name"&gt;David Rodriguez&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="team-member-role"&gt;Senior Developer&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="team-member"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="team-member-image"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://via.placeholder.com/120/f5f5f5/999999?text=AL" alt="Anna Liu"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="team-member-name"&gt;Anna Liu&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="team-member-role"&gt;Quantitative Analyst&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="team-member"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="team-member-image"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://via.placeholder.com/120/f5f5f5/999999?text=JW" alt="James Wilson"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="team-member-name"&gt;James Wilson&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="team-member-role"&gt;Operations Manager&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Mission, Vision, Values Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="section-title"&gt;Mission, Vision &amp; Values&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="values-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="value-block"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="value-title"&gt;Our Mission&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="value-description"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>To develop elite traders through institutional-grade education, cutting-edge technology, and disciplined trading practices. We are committed to bridging the gap between retail and professional trading, providing talented individuals with the tools, knowledge, and support needed to succeed in the financial markets.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="value-block"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="value-title"&gt;Our Vision&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="value-description"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>To establish LynxPoint Capital as the premier proprietary trading firm that sets the standard for trader development and performance. We envision a future where exceptional trading talent can access the same opportunities and resources as institutional traders, creating a new generation of market professionals.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="value-block"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="value-title"&gt;Our Values&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="value-description"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong&gt;Excellence:&lt;/strong&gt; We maintain the highest standards in trading, education, and operations.&lt;br&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong&gt;Integrity:&lt;/strong&gt; We operate with complete transparency and adhere to the highest ethical principles.&lt;br&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong&gt;Innovation:&lt;/strong&gt; We continuously evolve our strategies and technology to stay ahead of market dynamics.&lt;br&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong&gt;Discipline:&lt;/strong&gt; We believe consistent success comes from structured approaches and rigorous risk management.&lt;br&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong&gt;Collaboration:&lt;/strong&gt; We foster a culture where knowledge sharing and teamwork drive collective success.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Join Our Team Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="join-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="join-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="join-title"&gt;Join Our Team&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="join-description"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>We are always seeking exceptional individuals who share our commitment to excellence. Whether you are a trader, developer, analyst, or operations professional, LynxPoint Capital offers opportunities to work at the forefront of financial markets with cutting-edge technology and a collaborative culture focused on performance.</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="/careers" class="join-button"&gt;View Open Positions&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>About LynxPoint Capital</h1>
+            <p class="hero-description">
+                A proprietary trading firm headquartered in Quebec, committed to developing elite trading talent through structured education and institutional-grade tools.
+            </p>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Leadership</h2>
+            <div class="founders-grid">
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="https://via.placeholder.com/180/f5f5f5/999999?text=Jacob+Brown" alt="Jacob Brown">
+                    </div>
+                    <div class="founder-info">
+                        <h3 class="founder-name">Jacob Brown</h3>
+                        <p class="founder-title">Co-Founder & Chief Executive Officer</p>
+                        <p class="founder-bio">
+                            Jacob brings over a decade of experience in quantitative trading and risk management to LynxPoint Capital. His expertise in developing high-performance trading strategies and deep understanding of market dynamics has been instrumental in establishing LynxPoint's institutional-grade standards. Prior to founding LynxPoint, Jacob held senior positions at leading proprietary trading firms where he managed multi-million dollar portfolios.
+                        </p>
+                    </div>
+                </div>
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="https://via.placeholder.com/180/f5f5f5/999999?text=Nicholas+Rozon" alt="Nicholas Rozon">
+                    </div>
+                    <div class="founder-info">
+                        <h3 class="founder-name">Nicholas Rozon</h3>
+                        <p class="founder-title">Co-Founder & Chief Technology Officer</p>
+                        <p class="founder-bio">
+                            Nicholas combines deep technical expertise with extensive knowledge of financial markets. His background in algorithmic trading and system architecture has been crucial in building LynxPoint's cutting-edge trading infrastructure. With experience developing trading systems for major financial institutions, Nicholas ensures that LynxPoint traders have access to the same caliber of tools used by professional trading desks.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team-section">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=SM" alt="Sarah Mitchell">
+                    </div>
+                    <h4 class="team-member-name">Sarah Mitchell</h4>
+                    <p class="team-member-role">Head of Trading</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=MC" alt="Michael Chen">
+                    </div>
+                    <h4 class="team-member-name">Michael Chen</h4>
+                    <p class="team-member-role">Risk Manager</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=EP" alt="Emily Park">
+                    </div>
+                    <h4 class="team-member-name">Emily Park</h4>
+                    <p class="team-member-role">Head of Academy</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=DR" alt="David Rodriguez">
+                    </div>
+                    <h4 class="team-member-name">David Rodriguez</h4>
+                    <p class="team-member-role">Senior Developer</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=AL" alt="Anna Liu">
+                    </div>
+                    <h4 class="team-member-name">Anna Liu</h4>
+                    <p class="team-member-role">Quantitative Analyst</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-image">
+                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=JW" alt="James Wilson">
+                    </div>
+                    <h4 class="team-member-name">James Wilson</h4>
+                    <p class="team-member-role">Operations Manager</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Mission, Vision & Values</h2>
+            <div class="values-container">
+                <div class="value-block">
+                    <h3 class="value-title">Our Mission</h3>
+                    <p class="value-description">
+                        To develop elite traders through institutional-grade education, cutting-edge technology, and disciplined trading practices. We are committed to bridging the gap between retail and professional trading, providing talented individuals with the tools, knowledge, and support needed to succeed in the financial markets.
+                    </p>
+                </div>
+                <div class="value-block">
+                    <h3 class="value-title">Our Vision</h3>
+                    <p class="value-description">
+                        To establish LynxPoint Capital as the premier proprietary trading firm that sets the standard for trader development and performance. We envision a future where exceptional trading talent can access the same opportunities and resources as institutional traders, creating a new generation of market professionals.
+                    </p>
+                </div>
+                <div class="value-block">
+                    <h3 class="value-title">Our Values</h3>
+                    <p class="value-description">
+                        <strong>Excellence:</strong> We maintain the highest standards in trading, education, and operations.<br><br>
+                        <strong>Integrity:</strong> We operate with complete transparency and adhere to the highest ethical principles.<br><br>
+                        <strong>Innovation:</strong> We continuously evolve our strategies and technology to stay ahead of market dynamics.<br><br>
+                        <strong>Discipline:</strong> We believe consistent success comes from structured approaches and rigorous risk management.<br><br>
+                        <strong>Collaboration:</strong> We foster a culture where knowledge sharing and teamwork drive collective success.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Our Team Section -->
+    <section class="join-section">
+        <div class="container">
+            <div class="join-content">
+                <h2 class="join-title">Join Our Team</h2>
+                <p class="join-description">
+                    We are always seeking exceptional individuals who share our commitment to excellence. Whether you are a trader, developer, analyst, or operations professional, LynxPoint Capital offers opportunities to work at the forefront of financial markets with cutting-edge technology and a collaborative culture focused on performance.
+                </p>
+                <a href="/careers" class="join-button">View Open Positions</a>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
