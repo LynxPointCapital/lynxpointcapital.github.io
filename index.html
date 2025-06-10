@@ -47,10 +47,16 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #000;
-            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            transition: all 0.3s ease;
         }
 
         .nav-links {
@@ -411,6 +417,10 @@
                 display: none;
             }
 
+            .logo {
+                height: 40px;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -460,7 +470,9 @@
     <!-- Header -->
   <header id="header">
         <nav>
-            <div class="logo">Lynx Point Capital</div>
+            <div class="logo">
+                <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/LYNX%20logo%20black%20(NB).png?raw=true" alt="Lynx Point Capital">
+            </div>
             <ul class="nav-links">
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">What We Do</a></li>
