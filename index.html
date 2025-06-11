@@ -11,6 +11,151 @@
             box-sizing: border-box;
         }
 
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: logoFadeIn 1.5s ease-out 0.5s forwards;
+        }
+
+        .loading-text {
+            color: #4a90e2;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: textFadeIn 1.5s ease-out 1s forwards;
+        }
+
+        .loading-progress {
+            width: 300px;
+            height: 2px;
+            background: rgba(74, 144, 226, 0.2);
+            border-radius: 1px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4a90e2, #6ba3f0);
+            border-radius: 1px;
+            transform: translateX(-100%);
+            animation: progressBar 2s ease-out 1.5s forwards;
+        }
+
+        .loading-percentage {
+            color: #666;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0;
+            animation: percentageFadeIn 1.5s ease-out 1.8s forwards;
+        }
+
+        /* Lynx Point Animation */
+        .lynx-point {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #4a90e2;
+            border-radius: 50%;
+            opacity: 0;
+            animation: lynxPoint 3s ease-in-out infinite;
+        }
+
+        .lynx-point:nth-child(1) { top: 30%; left: 20%; animation-delay: 0s; }
+        .lynx-point:nth-child(2) { top: 50%; left: 80%; animation-delay: 0.5s; }
+        .lynx-point:nth-child(3) { top: 70%; left: 15%; animation-delay: 1s; }
+        .lynx-point:nth-child(4) { top: 20%; left: 75%; animation-delay: 1.5s; }
+        .lynx-point:nth-child(5) { top: 80%; left: 60%; animation-delay: 2s; }
+
+        @keyframes logoFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes progressBar {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0%);
+            }
+        }
+
+        @keyframes percentageFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes lynxPoint {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Main Website Content (hidden initially) */
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.8s ease-in;
+        }
+
+        .main-content.show {
+            opacity: 1;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
@@ -360,14 +505,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
-        .service-card:nth-child(odd) {
-            /* Removed border styling since cards now have individual shadows */
-        }
-
-        .service-card:nth-child(even) {
-            /* Removed border styling since cards now have individual shadows */
-        }
-
         .service-card h3 {
             font-size: 1.5rem;
             font-weight: 600;
@@ -661,14 +798,6 @@
                 gap: 3rem;
             }
 
-            .service-card:nth-child(odd) {
-                /* No special styling needed for responsive */
-            }
-
-            .service-card:nth-child(even) {
-                /* No special styling needed for responsive */
-            }
-
             .services-image {
                 order: -1;
             }
@@ -679,6 +808,18 @@
         }
 
         @media (max-width: 768px) {
+            .loading-logo {
+                width: 150px;
+            }
+
+            .loading-text {
+                font-size: 1rem;
+            }
+
+            .loading-progress {
+                width: 250px;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -747,281 +888,343 @@
     </style>
 </head>
 <body>
-   <!-- Header -->
-<header id="header">
-  <nav>
-    <div class="logo">
-      <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/LYNX%20logo%20black%20(NB).png?raw=true" alt="Lynx Point Capital">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <!-- Animated background points -->
+        <div class="lynx-point"></div>
+        <div class="lynx-point"></div>
+        <div class="lynx-point"></div>
+        <div class="lynx-point"></div>
+        <div class="lynx-point"></div>
+        
+        <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/LYNX%20logo%20white%20(NB).png?raw=true" alt="Lynx Point Capital" class="loading-logo">
+        <div class="loading-text">WHERE MARKETS ARE MASTERED</div>
+        <div class="loading-progress">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-percentage" id="loadingPercentage">0%</div>
     </div>
-    <ul class="nav-links">
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="#services">What We Do</a></li>
-      <li><a href="https://lynxpoint-capital.mykajabi.com/" target="_blank">Academy</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
-</header>
 
-    <!-- Hero Section with Image -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Where Markets Are Mastered</h1>
-            <p class="subtitle">Through disciplined strategies and relentless innovation, we navigate global markets with precision and conviction.</p>
-            <a href="#about" class="hero-cta">Explore Our Edge</a>
-        </div>
-    </section>
+    <!-- Main Website Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header id="header">
+            <nav>
+                <div class="logo">
+                    <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/LYNX%20logo%20black%20(NB).png?raw=true" alt="Lynx Point Capital">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">What We Do</a></li>
+                    <li><a href="https://lynxpoint-capital.mykajabi.com/" target="_blank">Academy</a></li>
+                    <li><a href="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Contact.html" target="_blank">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">The Next-Generation Trading Firm</h2>
-                <p class="section-subtitle">LynxPoint is a modern trading firm built at the intersection of financial insight, mathematical precision, and cutting-edge technology.</p>
+        <!-- Hero Section with Image -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Where Markets Are Mastered</h1>
+                <p class="subtitle">Through disciplined strategies and relentless innovation, we navigate global markets with precision and conviction.</p>
+                <a href="#about" class="hero-cta">Explore Our Edge</a>
             </div>
-            
-            <div class="about-content">
-                <div class="about-image fade-in">
-                    <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/350-Park_FICC_221006_0222.jpg?raw=true" alt="Lynx Point Capital Trading Environment" loading="lazy">
-                </div>
-                <div class="about-text fade-in">
-                    <p>We combine advanced analytics, systematic execution, and a deep understanding of market dynamics to deliver strategic trading solutions across global markets. Our mission is to empower traders and partners through innovative tools, rigorous risk management, and forward-thinking strategy.</p>
-                    <p>With a relentless focus on performance and continuous improvement, we aim to shape the future of active trading—one decision at a time.</p>
-                </div>
-                <div class="about-stats fade-in">
-                    <div class="stat-item">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Market Coverage</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">150+</span>
-                        <span class="stat-label">Global Markets</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">Years Combined Experience</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">99.9%</span>
-                        <span class="stat-label">Order Accuracy</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section services">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Proven Innovators. Trusted Partners.</h2>
-                <p class="section-subtitle"><strong>Precision-Driven Performance</strong><br>We combine elite talent, predictive analytics, and scalable systems to deliver consistent alpha in the world's most demanding markets.</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <h3>Quantitative Trading</h3>
-                    <h4>Algorithmic Mastery for Unrivaled Edge</h4>
-                    <p>Our machine learning and statistical arbitrage models uncover hidden opportunities across global markets—executing with precision to capture inefficiencies before they fade.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <h3>Risk Management</h3>
-                    <h4>Defensive Agility, Offensive Returns</h4>
-                    <p>Real-time monitoring, dynamic hedging, and adaptive position sizing ensure capital preservation without sacrificing performance—because longevity wins.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <h3>Market Making</h3>
-                    <h4>Liquidity Engineered for Efficiency</h4>
-                    <p>We provide seamless market access with tight spreads and deep liquidity, powered by proprietary pricing models and ultra-low-latency execution.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <h3>Technology Infrastructure</h3>
-                    <h4>The Architecture of Speed</h4>
-                    <p>From FPGA-accelerated order routing to petabyte-scale data analytics, our stack is built for one purpose: trading at the frontier of what's possible.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Academy Section -->
-    <section id="academy" class="section academy">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Lynx Point Academy</h2>
-                <p class="section-subtitle">Where Trading Excellence Begins</p>
-            </div>
-            
-            <div class="academy-card fade-in">
-                <div class="academy-header">
-                    <div class="academy-text">
-                        <h3>Master the Markets with Professional Trading Education</h3>
-                        <p>Lynx Point Academy delivers elite trading programs designed to equip traders with the skills needed to compete in today's financial markets. Our curriculum blends rigorous theory with real-world application, ensuring you gain both knowledge and practical experience.</p>
-                    </div>
-                    <div class="academy-image">
-                        <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/425-Park_FL-10_240404_462.jpg?raw=true" alt="Trading Education Environment" loading="lazy">
-                    </div>
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">The Next-Generation Trading Firm</h2>
+                    <p class="section-subtitle">LynxPoint is a modern trading firm built at the intersection of financial insight, mathematical precision, and cutting-edge technology.</p>
                 </div>
                 
-                <div class="academy-content">
-                    <div class="academy-section">
-                        <h4>Structured Trading Programs</h4>
-                        <ul class="academy-list">
-                            <li><strong>Core Trading Concepts</strong> – Price action, technical analysis, and risk management fundamentals.</li>
-                            <li><strong>Advanced Market Strategies</strong> – Systematic trading, quantitative methods, and execution tactics.</li>
-                            <li><strong>Professional Trading Preparation</strong> – Training for hedge funds, proprietary firms, and active market participants.</li>
-                        </ul>
+                <div class="about-content">
+                    <div class="about-image fade-in">
+                        <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/350-Park_FICC_221006_0222.jpg?raw=true" alt="Lynx Point Capital Trading Environment" loading="lazy">
                     </div>
-                    
-                    <div class="academy-section">
-                        <h4>Why Train with Us?</h4>
-                        <ul class="academy-list">
-                            <li><strong>Industry-Proven Mentors</strong> – Learn from professional traders with live market experience.</li>
-                            <li><strong>Interactive Trading Labs</strong> – Practice with real-time simulations and professional platforms.</li>
-                            <li><strong>Adaptive Learning Paths</strong> – Tailored courses for all skill levels, from beginners to advanced traders.</li>
-                        </ul>
+                    <div class="about-text fade-in">
+                        <p>We combine advanced analytics, systematic execution, and a deep understanding of market dynamics to deliver strategic trading solutions across global markets. Our mission is to empower traders and partners through innovative tools, rigorous risk management, and forward-thinking strategy.</p>
+                        <p>With a relentless focus on performance and continuous improvement, we aim to shape the future of active trading—one decision at a time.</p>
                     </div>
-                </div>
-                
-                <div class="academy-footer">
-                    <h4>Start Your Trading Career</h4>
-                    <p>Whether you're taking your first steps or sharpening your edge, Lynx Point Academy provides the tools and training for success.</p>
-                    <a href="https://lynxpoint-capital.mykajabi.com/" class="learn-more-btn" target="_blank">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Connect With Us</h2>
-                <p class="section-subtitle">Ready to discuss how Lynx Point Capital can help achieve your trading objectives? Our team is here to help.</p>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-item fade-in">
-                    <h4>Email</h4>
-                    <p>admin@lynxpointcapital.com</p>
-                </div>
-                <div class="contact-item fade-in">
-                    <h4>Location</h4>
-                    <p>201-455 Boul. la Gappe<br>Gatineau, Québec, Canada</p>
-                </div>
-                <div class="contact-item fade-in">
-                    <h4>Business Hours</h4>
-                    <p>Monday - Friday<br>7:00 AM - 5:00 PM EST</p>
-                </div>
-            </div>
-            
-            <div class="social-media fade-in">
-                <h4>Follow Us</h4>
-                <div class="social-links">
-                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
-                        <svg class="social-icon" viewBox="0 0 24 24">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                        <span>YouTube</span>
-                    </a>
-                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
-                        <svg class="social-icon" viewBox="0 0 24 24">
-                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                        </svg>
-                        <span>Twitter</span>
-                    </a>
-                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
-                        <svg class="social-icon" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                        <span>Instagram</span>
-                    </a>
-                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
-                        <svg class="social-icon" viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                        <span>Facebook</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Lynx Point Capital. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerHeight = 80;
-                    const targetPosition = target.offsetTop - headerHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Image fallback handling
-        const heroSection = document.querySelector('.hero');
-        const heroImage = new Image();
-        heroImage.src = 'https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Website-Headers_14-FL_241029_339.jpg?raw=true';
-        heroImage.addEventListener('error', function() {
-            // If image fails to load, show a gradient background instead
-            heroSection.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #4a90e2 100%)';
-        });
-
-        // Academy image fallback handling
-        const academyImage = document.querySelector('.academy-image img');
-        if (academyImage) {
-            academyImage.addEventListener('error', function() {
-                // If image fails to load, replace with placeholder
-                this.parentElement.innerHTML = `
-                    <div class="image-placeholder academy-placeholder">
-                        <div class="image-placeholder-content">
-                            <span>Trading Education Image</span>
+                    <div class="about-stats fade-in">
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Market Coverage</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">150+</span>
+                            <span class="stat-label">Global Markets</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Years Combined Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">99.9%</span>
+                            <span class="stat-label">Order Accuracy</span>
                         </div>
                     </div>
-                `;
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section services">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Proven Innovators. Trusted Partners.</h2>
+                    <p class="section-subtitle"><strong>Precision-Driven Performance</strong><br>We combine elite talent, predictive analytics, and scalable systems to deliver consistent alpha in the world's most demanding markets.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <h3>Quantitative Trading</h3>
+                        <h4>Algorithmic Mastery for Unrivaled Edge</h4>
+                        <p>Our machine learning and statistical arbitrage models uncover hidden opportunities across global markets—executing with precision to capture inefficiencies before they fade.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <h3>Risk Management</h3>
+                        <h4>Defensive Agility, Offensive Returns</h4>
+                        <p>Real-time monitoring, dynamic hedging, and adaptive position sizing ensure capital preservation without sacrificing performance—because longevity wins.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <h3>Market Making</h3>
+                        <h4>Liquidity Engineered for Efficiency</h4>
+                        <p>We provide seamless market access with tight spreads and deep liquidity, powered by proprietary pricing models and ultra-low-latency execution.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <h3>Technology Infrastructure</h3>
+                        <h4>The Architecture of Speed</h4>
+                        <p>From FPGA-accelerated order routing to petabyte-scale data analytics, our stack is built for one purpose: trading at the frontier of what's possible.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academy Section -->
+        <section id="academy" class="section academy">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Lynx Point Academy</h2>
+                    <p class="section-subtitle">Where Trading Excellence Begins</p>
+                </div>
+                
+                <div class="academy-card fade-in">
+                    <div class="academy-header">
+                        <div class="academy-text">
+                            <h3>Master the Markets with Professional Trading Education</h3>
+                            <p>Lynx Point Academy delivers elite trading programs designed to equip traders with the skills needed to compete in today's financial markets. Our curriculum blends rigorous theory with real-world application, ensuring you gain both knowledge and practical experience.</p>
+                        </div>
+                        <div class="academy-image">
+                            <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/425-Park_FL-10_240404_462.jpg?raw=true" alt="Trading Education Environment" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <div class="academy-content">
+                        <div class="academy-section">
+                            <h4>Structured Trading Programs</h4>
+                            <ul class="academy-list">
+                                <li><strong>Core Trading Concepts</strong> – Price action, technical analysis, and risk management fundamentals.</li>
+                                <li><strong>Advanced Market Strategies</strong> – Systematic trading, quantitative methods, and execution tactics.</li>
+                                <li><strong>Professional Trading Preparation</strong> – Training for hedge funds, proprietary firms, and active market participants.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="academy-section">
+                            <h4>Why Train with Us?</h4>
+                            <ul class="academy-list">
+                                <li><strong>Industry-Proven Mentors</strong> – Learn from professional traders with live market experience.</li>
+                                <li><strong>Interactive Trading Labs</strong> – Practice with real-time simulations and professional platforms.</li>
+                                <li><strong>Adaptive Learning Paths</strong> – Tailored courses for all skill levels, from beginners to advanced traders.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="academy-footer">
+                        <h4>Start Your Trading Career</h4>
+                        <p>Whether you're taking your first steps or sharpening your edge, Lynx Point Academy provides the tools and training for success.</p>
+                        <a href="https://lynxpoint-capital.mykajabi.com/" class="learn-more-btn" target="_blank">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Connect With Us</h2>
+                    <p class="section-subtitle">Ready to discuss how Lynx Point Capital can help achieve your trading objectives? Our team is here to help.</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-item fade-in">
+                        <h4>Email</h4>
+                        <p>admin@lynxpointcapital.com</p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <h4>Location</h4>
+                        <p>201-455 Boul. la Gappe<br>Gatineau, Québec, Canada</p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday<br>7:00 AM - 5:00 PM EST</p>
+                    </div>
+                </div>
+                
+                <div class="social-media fade-in">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <svg class="social-icon" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            <span>YouTube</span>
+                        </a>
+                        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <svg class="social-icon" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <svg class="social-icon" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <svg class="social-icon" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Lynx Point Capital. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Loading Screen Logic
+        let progress = 0;
+        const loadingPercentage = document.getElementById('loadingPercentage');
+        const loadingScreen = document.getElementById('loadingScreen');
+        const mainContent = document.getElementById('mainContent');
+
+        // Simulate loading progress
+        const loadingInterval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress > 100) progress = 100;
+            
+            loadingPercentage.textContent = Math.floor(progress) + '%';
+            
+            if (progress >= 100) {
+                clearInterval(loadingInterval);
+                setTimeout(() => {
+                    loadingScreen.classList.add('fade-out');
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        mainContent.classList.add('show');
+                        initializeMainWebsite();
+                    }, 800);
+                }, 500);
+            }
+        }, 100);
+
+        // Initialize main website functionality after loading
+        function initializeMainWebsite() {
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
             });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerHeight = 80;
+                        const targetPosition = target.offsetTop - headerHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Image fallback handling
+            const heroSection = document.querySelector('.hero');
+            const heroImage = new Image();
+            heroImage.src = 'https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Website-Headers_14-FL_241029_339.jpg?raw=true';
+            heroImage.addEventListener('error', function() {
+                // If image fails to load, show a gradient background instead
+                heroSection.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #4a90e2 100%)';
+            });
+
+            // Academy image fallback handling
+            const academyImage = document.querySelector('.academy-image img');
+            if (academyImage) {
+                academyImage.addEventListener('error', function() {
+                    // If image fails to load, replace with placeholder
+                    this.parentElement.innerHTML = `
+                        <div class="image-placeholder academy-placeholder">
+                            <div class="image-placeholder-content">
+                                <span>Trading Education Image</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
         }
+
+        // Preload critical images during loading screen
+        const imagesToPreload = [
+            'https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/LYNX%20logo%20black%20(NB).png?raw=true',
+            'https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Website-Headers_14-FL_241029_339.jpg?raw=true',
+            'https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/350-Park_FICC_221006_0222.jpg?raw=true',
+            'https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/425-Park_FL-10_240404_462.jpg?raw=true'
+        ];
+
+        imagesToPreload.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
     </script>
 </body>
 </html>
