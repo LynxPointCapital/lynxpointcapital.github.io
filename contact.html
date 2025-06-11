@@ -185,12 +185,13 @@
 
         /* Join Our Team Section */
         .join-team-section {
-            background: #ffffff;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
             border: 2px solid #1976D2;
-            padding: 3rem;
-            margin: 3rem 0;
+            padding: 4rem;
+            margin: 4rem 0;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 32px rgba(25, 118, 210, 0.1);
         }
 
         .join-team-content {
@@ -207,41 +208,127 @@
             background-image: url('https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/350-Park_FICC_221006_0222.jpg?raw=true');
             background-size: cover;
             background-position: center;
-            opacity: 0.1;
+            opacity: 0.15;
             z-index: 1;
         }
 
         .join-team-section h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             color: #1565C0;
             font-weight: 700;
-            border-bottom: 3px solid #1976D2;
-            padding-bottom: 0.5rem;
+            border-bottom: 4px solid #1976D2;
+            padding-bottom: 0.75rem;
             display: inline-block;
         }
 
         .join-team-section p {
-            font-size: 1.05rem;
-            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
             color: #444444;
-            line-height: 1.7;
-            max-width: 650px;
+            line-height: 1.8;
+        }
+
+        .join-team-email {
+            background: #f0f4ff;
+            border: 2px solid #1976D2;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .join-team-email h3 {
+            color: #1565C0;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .email-address {
+            color: #1976D2;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .email-address:hover {
+            text-decoration: underline;
         }
 
         .team-email-link {
             display: inline-block;
             background: #1976D2;
             color: #ffffff;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             text-decoration: none;
             font-weight: 600;
             border: 2px solid #1976D2;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-email-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .team-email-link:hover::before {
+            left: 100%;
         }
 
         .team-email-link:hover {
             background: #ffffff;
             color: #1976D2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
+        }
+
+        /* Stats Section */
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: #1976D2;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(25, 118, 210, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1976D2;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
         }
 
         /* Contact Info Section */
@@ -442,8 +529,15 @@
             <div class="join-team-background"></div>
             <div class="join-team-content">
                 <h2>Join Our Team</h2>
-                <p>We are always looking for exceptional individuals to join our growing team of elite traders. If you have the passion, discipline, and drive to excel in the world of proprietary trading, we want to hear from you. Our team thrives on precision, collaboration, and continuous improvement in the dynamic world of financial markets.</p>
-                <a href="mailto:admin@lynxpointcapital.com?subject=Application - Join Our Team" class="team-email-link">Send Your Application</a>
+                <p>We are always looking for exceptional individuals to join our growing team of elite traders. If you have the passion, discipline, and drive to excel in the world of proprietary trading, we want to hear from you.</p>
+                <p>Our team thrives on precision, collaboration, and continuous improvement in the dynamic world of financial markets. We offer a challenging yet supportive environment where talented traders can reach their full potential.</p>
+                
+                <div class="join-team-email">
+                    <h3>Send Your Application</h3>
+                    <a href="mailto:admin@lynxpointcapital.com" class="email-address">admin@lynxpointcapital.com</a>
+                    <br>
+                    <a href="mailto:admin@lynxpointcapital.com?subject=Job Application - Trading Position&body=Dear Lynx Point Capital Team,%0D%0A%0D%0AI am interested in joining your elite trading team. Please find my application details below:%0D%0A%0D%0AName: %0D%0AExperience: %0D%0ASpecialization: %0D%0A%0D%0AThank you for your consideration.%0D%0A%0D%0ABest regards," class="team-email-link">Send Your Application</a>
+                </div>
             </div>
         </div>
     </div>
