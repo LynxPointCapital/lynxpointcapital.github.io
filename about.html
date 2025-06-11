@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #ffffff;
+            background-color: #fafafa;
             color: #000000;
             line-height: 1.6;
             font-size: 16px;
@@ -23,11 +23,11 @@
         nav {
             background-color: #ffffff;
             padding: 1.5rem 0;
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom: 1px solid #e8e8e8;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         .nav-container {
@@ -46,10 +46,6 @@
             transition: opacity 0.2s ease;
         }
 
-        .logo:hover {
-            opacity: 0.7;
-        }
-
         /* Main Content */
         .container {
             max-width: 1200px;
@@ -59,27 +55,67 @@
 
         /* Hero Section */
         .hero-section {
-            padding: 5rem 0;
+            padding: 7rem 0 6rem;
             text-align: center;
-            background: linear-gradient(to bottom, #fafafa, #ffffff);
-            border-bottom: 1px solid #e5e5e5;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -25%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, transparent 60%);
+            transform: rotate(45deg);
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -25%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.03) 0%, transparent 60%);
+            transform: rotate(-45deg);
         }
 
         h1 {
-            font-size: 2.75rem;
-            font-weight: 300;
-            margin-bottom: 1.25rem;
-            color: #000000;
-            letter-spacing: -0.5px;
+            font-size: 3.25rem;
+            font-weight: 200;
+            margin-bottom: 1.75rem;
+            color: #0f172a;
+            letter-spacing: -1.5px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.2;
+        }
+
+        h1::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            border-radius: 2px;
         }
 
         .hero-description {
             font-size: 1.25rem;
-            color: #555555;
+            color: #4a5568;
             max-width: 800px;
             margin: 0 auto;
             font-weight: 300;
             line-height: 1.8;
+            position: relative;
+            z-index: 1;
         }
 
         /* Section Styles */
@@ -87,12 +123,16 @@
             padding: 5rem 0;
         }
 
+        .section-alt {
+            background-color: #ffffff;
+        }
+
         .section-title {
-            font-size: 2.25rem;
+            font-size: 2.5rem;
             font-weight: 300;
-            margin-bottom: 3.5rem;
+            margin-bottom: 4rem;
             text-align: center;
-            color: #000000;
+            color: #0a0a0a;
             letter-spacing: -0.5px;
             position: relative;
         }
@@ -100,45 +140,94 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -12px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 2px;
-            background-color: #2563eb;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #2563eb, #3b82f6);
+            border-radius: 2px;
         }
 
         /* Founders Section */
-        .founders-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 5rem;
-            margin-bottom: 4rem;
+        .founders-section {
+            background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+            position: relative;
+            padding: 6rem 0;
         }
 
-        .founder-card {
+        .founders-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent 10%, #e5e7eb 50%, transparent 90%);
+        }
+
+        .founders-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .founder-feature {
+            margin-bottom: 5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 12px;
+            padding: 3.5rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, #3b82f6, #2563eb, #3b82f6, transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .founder-feature:hover::before {
+            transform: translateX(100%);
+        }
+
+        .founder-feature:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+            border-color: #cbd5e1;
+        }
+
+        .founder-feature:last-child {
+            margin-bottom: 0;
+        }
+
+        .founder-header {
             display: flex;
-            align-items: flex-start;
-            gap: 2.5rem;
-            padding: 2rem;
-            background-color: #fafafa;
-            border: 1px solid #e5e5e5;
-            transition: all 0.3s ease;
-        }
-
-        .founder-card:hover {
-            border-color: #2563eb;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .founder-image {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             flex-shrink: 0;
             background-color: #ffffff;
-            border: 1px solid #e5e5e5;
+            border-radius: 6px;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
         }
 
         .founder-image img {
@@ -148,75 +237,126 @@
             transition: transform 0.3s ease;
         }
 
-        .founder-card:hover .founder-image img {
+        .founder-feature:hover .founder-image img {
             transform: scale(1.05);
         }
 
         .founder-info {
-            flex: 1;
+            text-align: left;
         }
 
         .founder-name {
-            font-size: 1.625rem;
-            font-weight: 400;
-            margin-bottom: 0.375rem;
-            color: #000000;
+            font-size: 2.25rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: #0a0a0a;
+            letter-spacing: -0.5px;
         }
 
         .founder-title {
             color: #2563eb;
-            margin-bottom: 1.25rem;
             font-weight: 400;
-            font-size: 1.125rem;
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .founder-bio-section {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
         }
 
         .founder-bio {
-            color: #333333;
-            line-height: 1.8;
+            color: #374151;
+            line-height: 1.9;
             font-weight: 300;
+            margin-bottom: 1.25rem;
+            font-size: 1.0625rem;
+        }
+
+        .founder-bio:last-child {
+            margin-bottom: 0;
         }
 
         /* Team Section */
         .team-section {
-            background-color: #f8f9fa;
-            border-top: 1px solid #e5e5e5;
-            border-bottom: 1px solid #e5e5e5;
+            background: linear-gradient(to bottom, #fafafa 0%, #f3f4f6 100%);
+            position: relative;
+            padding: 6rem 0;
+        }
+
+        .team-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent 10%, #e5e7eb 50%, transparent 90%);
         }
 
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 3rem;
+            padding: 1rem;
         }
 
         .team-member {
             text-align: center;
-            padding: 1.5rem;
-            background-color: #ffffff;
-            border: 1px solid #e5e5e5;
-            transition: all 0.3s ease;
+            padding: 2.5rem 2rem;
+            background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6 0%, #2563eb 50%, #3b82f6 100%);
+            transform: translateY(-4px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .team-member:hover::before {
+            transform: translateY(0);
         }
 
         .team-member:hover {
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+            transform: translateY(-6px);
+            background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+            border-color: #cbd5e1;
         }
 
         .team-member-image {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1.25rem;
-            background-color: #f5f5f5;
-            border: 1px solid #e5e5e5;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 1.5rem;
+            background-color: #f5f7fa;
+            border-radius: 4px;
             overflow: hidden;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
         }
 
         .team-member-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%);
+            filter: grayscale(20%);
             transition: filter 0.3s ease;
+        }
+
+        .team-member:hover .team-member-image {
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
         }
 
         .team-member:hover .team-member-image img {
@@ -227,32 +367,73 @@
             font-size: 1.125rem;
             font-weight: 500;
             margin-bottom: 0.375rem;
-            color: #000000;
+            color: #0a0a0a;
         }
 
         .team-member-role {
-            color: #666666;
+            color: #6b7280;
             font-size: 0.95rem;
             font-weight: 300;
         }
 
         /* Values Section */
+        .values-section {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            position: relative;
+            padding: 6rem 0;
+        }
+
+        .values-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+            filter: blur(40px);
+        }
+
         .values-container {
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .value-block {
             margin-bottom: 3.5rem;
-            padding: 2.5rem;
-            background-color: #fafafa;
-            border-left: 3px solid #2563eb;
-            transition: all 0.3s ease;
+            padding: 3rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3b82f6, #2563eb);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .value-block:hover::before {
+            transform: scaleY(1);
         }
 
         .value-block:hover {
-            background-color: #f5f5f5;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            transform: translateX(8px);
+            border-color: #cbd5e1;
         }
 
         .value-block:last-child {
@@ -260,30 +441,52 @@
         }
 
         .value-title {
-            font-size: 1.625rem;
+            font-size: 1.875rem;
             font-weight: 400;
-            margin-bottom: 1.25rem;
-            color: #000000;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .value-description {
-            color: #333333;
-            line-height: 1.8;
+            color: #334155;
+            line-height: 1.9;
             font-weight: 300;
+            font-size: 1.125rem;
         }
 
         .value-description strong {
-            font-weight: 500;
-            color: #000000;
+            font-weight: 600;
+            color: #1e293b;
             display: inline-block;
             margin-bottom: 0.25rem;
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        .value-description strong::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            transition: width 0.3s ease;
+        }
+
+        .value-block:hover .value-description strong::after {
+            width: 100%;
         }
 
         /* Join Section */
         .join-section {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
             color: #ffffff;
-            padding: 5rem 0;
+            padding: 6rem 0;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -296,7 +499,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
         }
 
         .join-content {
@@ -305,40 +509,56 @@
         }
 
         .join-title {
-            font-size: 2.25rem;
+            font-size: 2.5rem;
             font-weight: 300;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             letter-spacing: -0.5px;
         }
 
         .join-description {
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             font-weight: 300;
-            line-height: 1.8;
+            line-height: 1.9;
             font-size: 1.125rem;
         }
 
         .join-button {
             display: inline-block;
-            background-color: #2563eb;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
             color: #ffffff;
-            padding: 1rem 2.5rem;
+            padding: 1.125rem 3rem;
             text-decoration: none;
             font-weight: 400;
             font-size: 1.0625rem;
+            border-radius: 4px;
             transition: all 0.3s ease;
-            border: 2px solid #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+
+        .join-button:hover::before {
+            left: 100%;
         }
 
         .join-button:hover {
-            background-color: transparent;
-            color: #ffffff;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
         }
 
         /* Subtle animations */
@@ -359,18 +579,26 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .founders-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+            .founder-header {
+                flex-direction: column;
+                gap: 1.5rem;
             }
 
-            .founder-card {
-                flex-direction: column;
-                text-align: center;
+            .founder-feature {
+                padding: 2rem;
             }
 
             .founder-image {
-                margin: 0 auto;
+                width: 150px;
+                height: 150px;
+            }
+
+            .founder-info {
+                text-align: center;
+            }
+
+            .founder-name {
+                font-size: 1.875rem;
             }
 
             .team-grid {
@@ -383,7 +611,7 @@
             }
 
             .section-title {
-                font-size: 1.875rem;
+                font-size: 2rem;
             }
 
             .value-block {
@@ -417,31 +645,48 @@
     </section>
 
     <!-- Founders Section -->
-    <section class="section">
+    <section class="section founders-section">
         <div class="container">
             <h2 class="section-title">Leadership</h2>
-            <div class="founders-grid">
-                <div class="founder-card">
-                    <div class="founder-image">
-                        <img src="https://via.placeholder.com/180/f5f5f5/999999?text=Jacob+Brown" alt="Jacob Brown">
+            <div class="founders-container">
+                <div class="founder-feature">
+                    <div class="founder-header">
+                        <div class="founder-image">
+                            <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Co-Founder:Head%20Trader.jpg?raw=true" alt="Jacob Brown">
+                        </div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">Jacob Brown</h3>
+                            <p class="founder-title">Co-Founder & Head Trader</p>
+                        </div>
                     </div>
-                    <div class="founder-info">
-                        <h3 class="founder-name">Jacob Brown</h3>
-                        <p class="founder-title">Co-Founder & Chief Executive Officer</p>
+                    <div class="founder-bio-section">
                         <p class="founder-bio">
-                            Jacob brings over a decade of experience in quantitative trading and risk management to LynxPoint Capital. His expertise in developing high-performance trading strategies and deep understanding of market dynamics has been instrumental in establishing LynxPoint's institutional-grade standards. Prior to founding LynxPoint, Jacob held senior positions at leading proprietary trading firms where he managed multi-million dollar portfolios.
+                            With over a decade of experience in the financial markets, Jacob Brown brings deep expertise, sharp instincts, and disciplined execution to LynxPoint Capital. From an early age, Jacob was drawn to the world of trading, not just for the thrill of the markets, but for the intellectual challenge it demands. Over the years, he has developed and refined a unique trading style rooted in data-driven decision-making, technical precision, and unwavering risk control.
+                        </p>
+                        <p class="founder-bio">
+                            As Head Trader, Jacob leads the firm's market operations and strategy development. He plays a pivotal role in mentoring new talent, designing proprietary systems, and staying ahead of market trends across asset classes. His leadership is defined by calm under pressure, strategic thinking, and an ability to turn market uncertainty into opportunity.
                         </p>
                     </div>
                 </div>
-                <div class="founder-card">
-                    <div class="founder-image">
-                        <img src="https://via.placeholder.com/180/f5f5f5/999999?text=Nicholas+Rozon" alt="Nicholas Rozon">
+                <div class="founder-feature">
+                    <div class="founder-header">
+                        <div class="founder-image">
+                            <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Co-Founder:Risk%20Manager.jpg?raw=true" alt="Nicholas Rozon">
+                        </div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">Nicholas Rozon</h3>
+                            <p class="founder-title">Co-Founder & Risk Manager</p>
+                        </div>
                     </div>
-                    <div class="founder-info">
-                        <h3 class="founder-name">Nicholas Rozon</h3>
-                        <p class="founder-title">Co-Founder & Chief Technology Officer</p>
+                    <div class="founder-bio-section">
                         <p class="founder-bio">
-                            Nicholas combines deep technical expertise with extensive knowledge of financial markets. His background in algorithmic trading and system architecture has been crucial in building LynxPoint's cutting-edge trading infrastructure. With experience developing trading systems for major financial institutions, Nicholas ensures that LynxPoint traders have access to the same caliber of tools used by professional trading desks.
+                            With over 15 years of experience in business development and strategic operations, Nicholas Rozon is the driving force behind the structure and growth of LynxPoint Capital. As Co-Founder and Risk Manager, he ensures the firm operates with precision, creating an environment where traders can perform at their highest level while maintaining disciplined risk protocols.
+                        </p>
+                        <p class="founder-bio">
+                            Nicholas brings a strong background in business relations, systems thinking, and organizational leadership. His ability to connect vision with execution makes him instrumental in shaping the firm's direction, refining internal processes, and managing firm-wide risk with consistency and transparency.
+                        </p>
+                        <p class="founder-bio">
+                            Passionate about performance, Nicholas works closely with the trading team to align goals, enforce accountability, and make sure every decision supports long-term profitability and sustainability.
                         </p>
                     </div>
                 </div>
@@ -456,75 +701,75 @@
             <div class="team-grid">
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=SM" alt="Sarah Mitchell">
+                        <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Co-Founder:Head%20Trader.jpg?raw=true" alt="Jacob Brown">
                     </div>
-                    <h4 class="team-member-name">Sarah Mitchell</h4>
-                    <p class="team-member-role">Head of Trading</p>
+                    <h4 class="team-member-name">Jacob Brown</h4>
+                    <p class="team-member-role">Co-Founder / Head Trader</p>
                 </div>
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=MC" alt="Michael Chen">
+                        <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Co-Founder:Risk%20Manager.jpg?raw=true" alt="Nicholas Rozon">
                     </div>
-                    <h4 class="team-member-name">Michael Chen</h4>
-                    <p class="team-member-role">Risk Manager</p>
+                    <h4 class="team-member-name">Nicholas Rozon</h4>
+                    <p class="team-member-role">Co-Founder / Risk Manager</p>
                 </div>
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=EP" alt="Emily Park">
+                        <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Trader:Fundamental%20Analyst.jpg?raw=true" alt="George Rizk">
                     </div>
-                    <h4 class="team-member-name">Emily Park</h4>
-                    <p class="team-member-role">Head of Academy</p>
+                    <h4 class="team-member-name">George Rizk</h4>
+                    <p class="team-member-role">Trader / Fundamental Analyst</p>
                 </div>
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=DR" alt="David Rodriguez">
+                        <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Junior%20Trader:Technical%20Analyst.jpg?raw=true" alt="Giacomo Moreschi">
                     </div>
-                    <h4 class="team-member-name">David Rodriguez</h4>
-                    <p class="team-member-role">Senior Developer</p>
+                    <h4 class="team-member-name">Giacomo Moreschi</h4>
+                    <p class="team-member-role">Junior Trader / Technical Analyst</p>
                 </div>
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=AL" alt="Anna Liu">
+                        <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/Sales%20Representative.jpg?raw=true" alt="Elie Maalouf">
                     </div>
-                    <h4 class="team-member-name">Anna Liu</h4>
-                    <p class="team-member-role">Quantitative Analyst</p>
+                    <h4 class="team-member-name">Elie Maalouf</h4>
+                    <p class="team-member-role">Portfolio Manager & Marketing</p>
                 </div>
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://via.placeholder.com/120/f5f5f5/999999?text=JW" alt="James Wilson">
+                        <img src="https://github.com/LynxPointCapital/lynxpointcapital.github.io/blob/main/IT%20Systems%20Administrator.jpg?raw=true" alt="Jyotwant Dhaliwal">
                     </div>
-                    <h4 class="team-member-name">James Wilson</h4>
-                    <p class="team-member-role">Operations Manager</p>
+                    <h4 class="team-member-name">Jyotwant Dhaliwal</h4>
+                    <p class="team-member-role">Trader / Systems Manager</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Mission, Vision, Values Section -->
-    <section class="section">
+    <section class="section values-section">
         <div class="container">
             <h2 class="section-title">Mission, Vision & Values</h2>
             <div class="values-container">
                 <div class="value-block">
                     <h3 class="value-title">Our Mission</h3>
                     <p class="value-description">
-                        To develop elite traders through institutional-grade education, cutting-edge technology, and disciplined trading practices. We are committed to bridging the gap between retail and professional trading, providing talented individuals with the tools, knowledge, and support needed to succeed in the financial markets.
+                        To shape elite, performance-driven traders through world-class education, cutting-edge technology, and disciplined strategy. At LynxPoint Capital, we bridge the gap between retail and institutional trading by equipping individuals with the tools, training, and support needed to compete and thrive in today's financial markets.
                     </p>
                 </div>
                 <div class="value-block">
                     <h3 class="value-title">Our Vision</h3>
                     <p class="value-description">
-                        To establish LynxPoint Capital as the premier proprietary trading firm that sets the standard for trader development and performance. We envision a future where exceptional trading talent can access the same opportunities and resources as institutional traders, creating a new generation of market professionals.
+                        To position LynxPoint Capital as the benchmark for modern proprietary trading: where innovation meets precision, and talent meets opportunity. We envision a world where ambitious traders have the same access to infrastructure, insight, and execution power as top-tier institutions, redefining what's possible for the next generation of professionals.
                     </p>
                 </div>
                 <div class="value-block">
                     <h3 class="value-title">Our Values</h3>
                     <p class="value-description">
-                        <strong>Excellence:</strong> We maintain the highest standards in trading, education, and operations.<br><br>
-                        <strong>Integrity:</strong> We operate with complete transparency and adhere to the highest ethical principles.<br><br>
-                        <strong>Innovation:</strong> We continuously evolve our strategies and technology to stay ahead of market dynamics.<br><br>
-                        <strong>Discipline:</strong> We believe consistent success comes from structured approaches and rigorous risk management.<br><br>
-                        <strong>Collaboration:</strong> We foster a culture where knowledge sharing and teamwork drive collective success.
+                        <strong>Excellence</strong> — We pursue the highest standards across trading, education, and execution — because second-best is not an option.<br><br>
+                        <strong>Integrity</strong> — We operate with full transparency and uphold the highest ethical standards in every decision we make.<br><br>
+                        <strong>Innovation</strong> — We relentlessly refine our strategies and technologies to stay ahead of evolving market dynamics.<br><br>
+                        <strong>Discipline</strong> — We believe consistency is built through structure, accountability, and meticulous risk management.<br><br>
+                        <strong>Collaboration</strong> — We cultivate a team-first culture where knowledge is shared, performance is celebrated, and collective success is the standard.
                     </p>
                 </div>
             </div>
@@ -539,7 +784,7 @@
                 <p class="join-description">
                     We are always seeking exceptional individuals who share our commitment to excellence. Whether you are a trader, developer, analyst, or operations professional, LynxPoint Capital offers opportunities to work at the forefront of financial markets with cutting-edge technology and a collaborative culture focused on performance.
                 </p>
-                <a href="/careers" class="join-button">View Open Positions</a>
+                <a href="mailto:admin@lynxpointcapital.com" class="join-button">Apply Now</a>
             </div>
         </div>
     </section>
